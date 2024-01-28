@@ -6,3 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+bytemuck = { version = "1.14.0", features = ["derive"] }
+chrono = "0.4.31"
+pollster = "0.3.0"
+rwlog = { path = "../rwlog", version = "0.1.0" }
+wgpu = "0.16.3"
