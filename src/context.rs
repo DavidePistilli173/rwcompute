@@ -5,6 +5,7 @@ use rwlog::sender::Logger;
 use crate::error::ContextCreationError;
 
 /// Graphics compute context.
+#[derive(Debug)]
 pub struct Context {
     /// Physical device used for computing.
     adapter: wgpu::Adapter,
@@ -62,7 +63,7 @@ impl Context {
             })
             .await
             .ok_or_else(|| {
-                rwlog::rel_err!(&logger, "Failed to get a compute device.");
+                rwlog::err!(&logger, "Failed to get a compute device.");
                 ContextCreationError::NoPhysicalComputeDevice
             })?;
 
@@ -82,7 +83,7 @@ impl Context {
             )
             .await
             .map_err(|err| {
-                rwlog::rel_err!(
+                rwlog::err!(
                     &logger,
                     "Failed to create logical compute device and queue: {err}."
                 );
